@@ -8,18 +8,22 @@ import FlatButton from 'material-ui/FlatButton';
 import Toggle from 'material-ui/Toggle';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
+import { Link } from 'react-router'
+import { browserHistory } from 'react-router'
 
 class Login extends Component {
   static muiName = 'FlatButton';
 
   render() {
     return (
-      <FlatButton {...this.props} label="Login" />
+      <FlatButton 
+      {...this.props}label="Login"/>
     );
   }
 }
 
 const Logged = (props) => (
+
   <IconMenu
     {...props}
     iconButtonElement={
@@ -28,7 +32,7 @@ const Logged = (props) => (
     targetOrigin={{horizontal: 'right', vertical: 'top'}}
     anchorOrigin={{horizontal: 'right', vertical: 'top'}}
   >
-    <MenuItem primaryText="Refresh" />
+    <MenuItem primaryText="Refresh"/>
     <MenuItem primaryText="Help" />
     <MenuItem primaryText="Sign out" />
   </IconMenu>
@@ -64,6 +68,7 @@ class AppBarExampleComposition extends Component {
     this.setState({logged: logged});
   };
 
+
   render() {
     return (
      <div>
@@ -76,13 +81,22 @@ class AppBarExampleComposition extends Component {
         />
         <AppBar
           title="Menu"
-        onLeftIconButtonTouchTap={this.menuToggle}
+          onLeftIconButtonTouchTap={this.menuToggle}
           iconElementRight={this.state.logged ? <Logged /> : <Login />}
         />
          <Drawer open={this.state.menuOpen} docked={false} onRequestChange={(open, reason) => this.setState({menuOpen:open})}>
           <MenuItem>Menu Item</MenuItem>
           <MenuItem>Menu Item 2</MenuItem>
         </Drawer>
+
+      
+        <h1>App</h1>
+        <ul>
+          <li><Link to='/admin'>Admin</Link></li>
+          <li><Link to='/genre'>Genre</Link></li>
+        </ul>
+        {/* добавили вывод потомков */}
+        {this.props.children}
       </div>
     );
   }
