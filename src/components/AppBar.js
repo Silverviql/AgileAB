@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+
 import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
@@ -8,16 +9,31 @@ import FlatButton from 'material-ui/FlatButton';
 import Toggle from 'material-ui/Toggle';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
+
 import { Link } from 'react-router'
 import { browserHistory } from 'react-router'
 
 class Login extends Component {
   static muiName = 'FlatButton';
+  
+   constructor(...args){
+    super(...args);
+
+  }
+ 
+  inLogin(){
+browserHistory.push('/login');
+  }
 
   render() {
     return (
+     <div>
       <FlatButton 
-      {...this.props}label="Login"/>
+        label="Login"
+        onTouchTap={this.inLogin}
+        {...this.props}
+        />
+      </div>
     );
   }
 }
@@ -44,7 +60,7 @@ Logged.muiName = 'IconMenu';
  * This example is taking advantage of the composability of the `AppBar`
  * to render different components depending on the application state.
  */
-class AppBarExampleComposition extends Component {
+class Bar extends Component {
 
 
     constructor(...args){
@@ -67,7 +83,6 @@ class AppBarExampleComposition extends Component {
   handleChange = (event, logged) => {
     this.setState({logged: logged});
   };
-
 
   render() {
     return (
@@ -102,4 +117,4 @@ class AppBarExampleComposition extends Component {
   }
 }
 
-export default AppBarExampleComposition;
+export default Bar;

@@ -2,11 +2,12 @@ import 'normalize.css';
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import AgileAB from './containers/AgileAB'
+import Main from './containers/Main'
 import Admin from './components/Admin'
 import Genre from './components/Genre'
 import Home from './components/Home'
 import NotFound from './components/NotFound'
+import Login from './components/Login'
 
 import ReactDOM from 'react-dom';
 
@@ -16,15 +17,32 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 
 injectTapEventPlugin();
 
+/*class Model extends EventEmmiter{}
+
+class User extends Model{
+    isGuest = true;
+}*/
+
+function needAuth(){
+   /* User.on('logged', ()=>{
+        
+    })*/
+    const isGuest = false;
+    if(isGuest){
+        browserHistory.push('/auth')
+    }
+}
+
 ReactDOM.render(
 <MuiThemeProvider>
     
 <Router history={browserHistory}>
-    <Route path='/' component={AgileAB}>
+    <Route path='/' component={Main} onEnter={needAuth}>
       <IndexRoute component={Home} />
       <Route path='admin' component={Admin} />
       <Route path='genre' component={Genre} />
     </Route>
+    <Route path='/login' component={Login} />
        {/* для всех остальных роутов: показывай NotFound */}
     <Route path='*' component={NotFound} />
   </Router>
