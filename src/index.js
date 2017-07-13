@@ -8,6 +8,7 @@ import Genre from './components/Genre'
 import Home from './components/Home'
 import NotFound from './components/NotFound'
 import Login from './components/Login'
+import Sign from './components/Sign'
 
 import ReactDOM from 'react-dom';
 
@@ -43,6 +44,7 @@ ReactDOM.render(
       <Route path='genre' component={Genre} />
     </Route>
     <Route path='/login' component={Login} />
+    <Route path='/sign' component={Sign} />
        {/* для всех остальных роутов: показывай NotFound */}
     <Route path='*' component={NotFound} />
   </Router>

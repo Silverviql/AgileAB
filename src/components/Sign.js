@@ -25,15 +25,15 @@ const style = {
   }
 };
 
-class Log_in extends Component {
+class Sign_in extends Component {
   constructor(...args){
     super(...args);
 
-    this.onSign = this.onSign.bind(this);
+    this.onLogin = this.onLogin.bind(this);
   }
 
-  onSign(){
-  browserHistory.push('/sign');
+  onLogin(){
+  browserHistory.push('/login');
   }
 
     render(){
@@ -42,15 +42,18 @@ class Log_in extends Component {
             <Paper zDepth={2}>
               <TextField hintText="Username" style={style} underlineShow={false} />
               <Divider />
+              <TextField hintText="Email" style={style} underlineShow={false} />
+              <Divider />
               <TextField hintText="Password" style={style} underlineShow={false} />
               <Divider />
-              <RaisedButton label="LOG IN" primary={true} style={style} />
+              <TextField hintText="Confirm Password" style={style} underlineShow={false} />
               <Divider />
-              <FlatButton label="Sign up" primary={true} onTouchTap={this.onSign} />
+              <RaisedButton label="SIGNUP" primary={true} style={style} onTouchTap={this.onLogin} />
+              <Divider />
             </Paper>
         </div>
     );
   }
 }
 
-export default Log_in;
+export default Sign_in;

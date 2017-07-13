@@ -22,7 +22,7 @@ class Login extends Component {
   }
  
   inLogin(){
-browserHistory.push('/login');
+    browserHistory.push('/login');
   }
 
   render() {
