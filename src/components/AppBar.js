@@ -28,11 +28,7 @@ class Login extends Component {
   render() {
     return (
      <div>
-      <FlatButton 
-        label="Login"
-        onTouchTap={this.inLogin}
-        {...this.props}
-        />
+      <FlatButton label="Login"onTouchTap={this.inLogin} {...this.props}/>
       </div>
     );
   }

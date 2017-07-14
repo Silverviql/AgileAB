@@ -5,23 +5,33 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 
-import { browserHistory } from 'react-router'
+import Screen from '../utils/Screen';
+
+import { browserHistory } from 'react-router';
+
+import AgileSvg from '../agile.svg';
 
 
-const style = {
-  marginLeft: 20,
-   margin: 10,
-
- 
-  log_in: {
-    cursor: 'pointer',
-    position: 'absolute',
-    top: 100,
-    bottom: 0,
-    right: 100,
-    left: 0,
-    width: '100%',
-    opacity: 0,
+const Styles = {
+  main: {
+    height: Screen.height,
+    backgroundColor: 'rgba(61, 80, 105, 0.9)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+    overflow: 'hidden'
+  },
+  logo: {
+    width: '50%'
+  },
+  input:{
+  //  textAlign: 'center',
+    сolor: 'rgba(0, 0, 0, 0.9)',
+    width: '80%'
+  },
+  button:{
+    width: '80%'
   }
 };
 
@@ -30,6 +40,11 @@ class Log_in extends Component {
     super(...args);
 
     this.onSign = this.onSign.bind(this);
+    this.onAuth = this.onAuth.bind(this);
+  }
+
+  onAuth(){
+    browserHistory.push('/');
   }
 
   onSign(){
@@ -38,18 +53,18 @@ class Log_in extends Component {
 
     render(){
       return (
-          <div>
-            <Paper zDepth={2}>
-              <TextField hintText="Username" style={style} underlineShow={false} />
-              <Divider />
-              <TextField hintText="Password" style={style} underlineShow={false} />
-              <Divider />
-              <RaisedButton label="LOG IN" primary={true} style={style} />
-              <Divider />
-              <FlatButton label="Sign up" primary={true} onTouchTap={this.onSign} />
-            </Paper>
+        <div style={Styles.main}>
+          <img src={AgileSvg} style={Styles.logo}/>
+          <TextField hintText="Username"  style={Styles.input} />
+          {/*<TextField hintText="Username"  inputStyle={Styles.input} hintStyle={Styles.input} />*/}
+          <TextField hintText="Password" style={Styles.input}/>
+          <br />
+          <RaisedButton label="LOG IN" primary={true} style={Styles.button} onTouchTap={this.onAuth}/>
+          
+          <FlatButton label="Sign up" primary={true} style={Styles.button} onTouchTap={this.onSign} />
         </div>
-    );
+      );
+      
   }
 }
 
