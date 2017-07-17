@@ -19,16 +19,24 @@ class Login extends Component {
    constructor(...args){
     super(...args);
 
+    this.inLogin = this.inLogin.bind(this);
+    this.settingOut = this.settingOut.bind(this);
   }
  
   inLogin(){
     browserHistory.push('/login');
   }
 
+  settingOut(){
+    browserHistory.push('/login');
+  }
+
+ 
+
   render() {
     return (
      <div>
-      <FlatButton label="Login"onTouchTap={this.inLogin} {...this.props}/>
+      <FlatButton label="Login" onTouchTap={this.settingOut} {...this.props}/>
       </div>
     );
   }
@@ -46,7 +54,8 @@ const Logged = (props) => (
   >
     <MenuItem primaryText="Refresh"/>
     <MenuItem primaryText="Help" />
-    <MenuItem primaryText="Sign out" />
+    {/*<MenuItem primaryText="Sign out" onTouchTap={this.inLogin} {...this.props}/>*/}
+    <MenuItem onTouchTap={this.settingOut} >Sign out</MenuItem>
   </IconMenu>
 );
 
@@ -68,12 +77,18 @@ class Bar extends Component {
     }
 
     this.menuToggle = this.menuToggle.bind(this);
+    this.menuTable = this.menuTable.bind(this);
   }
+
 
   menuToggle(){
     this.setState({
       menuOpen: !this.state.menuOpen
     })
+  }
+
+menuTable(){
+  browserHistory.push('/table');
   }
 
   handleChange = (event, logged) => {
@@ -88,7 +103,7 @@ class Bar extends Component {
           defaultToggled={true}
           onToggle={this.handleChange}
           labelPosition="right"
-          style={{margin: 20}}
+
         />
         <AppBar
           title="Menu"
@@ -96,7 +111,7 @@ class Bar extends Component {
           iconElementRight={this.state.logged ? <Logged /> : <Login />}
         />
          <Drawer open={this.state.menuOpen} docked={false} onRequestChange={(open, reason) => this.setState({menuOpen:open})}>
-          <MenuItem>Menu Item</MenuItem>
+          <MenuItem onTouchTap={this.menuTable} >Table</MenuItem>
           <MenuItem>Menu Item 2</MenuItem>
         </Drawer>
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import Screen from '../utils/Screen';
 import styles from '../css/style.css';
-import notFound from '../notFound.svg';
+import notFound from '../notFound.gif';
 
 const Styles = {
   //   wrapper: {
@@ -22,16 +22,19 @@ const Styles = {
   // },
   main: {
     height: Screen.height,
-    backgroundColor: 'rgba(61, 80, 105, 0.9)',
+    backgroundColor: 'rgba(255, 255, 255, 1)',
     display: 'flex',
      justifyContent: 'center',
      alignItems: 'center',
      flexDirection: 'column',
-     overflow: 'hidden'
+     overflow: 'hidden',
+     fontFamily: 'sans-serif',
+     fontSize: '22px'
   },
   logo: {
-    width: '80%',
+    width: '100%',
   },
+  
  };
 
 export default class NotFound extends Component {
@@ -41,6 +44,7 @@ export default class NotFound extends Component {
       return (
         <div style={Styles.main} >
           <img src={notFound} style={Styles.logo}/>
+           <p>Page Not Found</p>
         </div>
       );
   }

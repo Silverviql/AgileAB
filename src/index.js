@@ -2,13 +2,15 @@ import 'normalize.css';
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import Main from './containers/Main'
-import Admin from './components/Admin'
-import Genre from './components/Genre'
-import Home from './components/Home'
-import NotFound from './components/NotFound'
-import Login from './components/Login'
-import Sign from './components/Sign'
+import Main from './containers/Main';
+import Admin from './components/Admin';
+import Genre from './components/Genre';
+import Home from './components/Home';
+import NotFound from './components/NotFound';
+import Login from './components/Login';
+import Sign from './components/Sign';
+import Table from './components/Table';
+
 
 import ReactDOM from 'react-dom';
 
@@ -42,7 +44,9 @@ ReactDOM.render(
       <IndexRoute component={Home} />
       <Route path='admin' component={Admin} />
       <Route path='genre' component={Genre} />
+      <Route path='/table' component={Table} />
     </Route>
+
     <Route path='/login' component={Login} />
     <Route path='/sign' component={Sign} />
        {/* для всех остальных роутов: показывай NotFound */}

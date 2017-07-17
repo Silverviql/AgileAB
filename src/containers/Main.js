@@ -12,6 +12,7 @@ export default class Main extends Component{
     return (
          <div>
       <AppBar/>
+
       {this.props.children}
        </div>
     );

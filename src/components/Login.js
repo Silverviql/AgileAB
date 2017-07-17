@@ -15,7 +15,8 @@ import AgileSvg from '../agile.svg';
 const Styles = {
   main: {
     height: Screen.height,
-    backgroundColor: 'rgba(61, 80, 105, 0.9)',
+    //backgroundColor: 'rgba(61, 80, 105, 0.9)',
+    backgroundColor: 'rgba(255, 255, 255, 1)',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
