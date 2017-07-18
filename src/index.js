@@ -3,13 +3,12 @@ import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import Main from './containers/Main';
-import Admin from './components/Admin';
-import Genre from './components/Genre';
 import Home from './components/Home';
 import NotFound from './components/NotFound';
 import Login from './components/Login';
 import Sign from './components/Sign';
 import Table from './components/Table';
+import Tabs from './components/Tabs';
 
 
 import ReactDOM from 'react-dom';
@@ -42,9 +41,8 @@ ReactDOM.render(
 <Router history={browserHistory}>
     <Route path='/' component={Main} onEnter={needAuth}>
       <IndexRoute component={Home} />
-      <Route path='admin' component={Admin} />
-      <Route path='genre' component={Genre} />
       <Route path='/table' component={Table} />
+      <Route path='/swipe' component={Tabs} />
     </Route>
 
     <Route path='/login' component={Login} />

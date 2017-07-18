@@ -61,6 +61,13 @@ const Logged = (props) => (
 
 Logged.muiName = 'IconMenu';
 
+
+const styles = {
+  menu: {
+  boxShadow: 'rgba(0, 0, 0, 0)',
+  },
+};
+
 /**
  * This example is taking advantage of the composability of the `AppBar`
  * to render different components depending on the application state.
@@ -106,7 +113,7 @@ menuTable(){
 
         />
         <AppBar
-          title="Menu"
+          title="Menu" style={styles.menu}
           onLeftIconButtonTouchTap={this.menuToggle}
           iconElementRight={this.state.logged ? <Logged /> : <Login />}
         />
@@ -114,13 +121,6 @@ menuTable(){
           <MenuItem onTouchTap={this.menuTable} >Table</MenuItem>
           <MenuItem>Menu Item 2</MenuItem>
         </Drawer>
-
-      
-        <h1>App</h1>
-        <ul>
-          <li><Link to='/admin'>Admin</Link></li>
-          <li><Link to='/genre'>Genre</Link></li>
-        </ul>
         {/* добавили вывод потомков */}
         {this.props.children}
       </div>
