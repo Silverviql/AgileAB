@@ -10,6 +10,8 @@ import Sign from './components/Sign';
 import Table from './components/Table';
 import Tabs from './components/Tabs';
 
+import { Provider } from 'react-redux'
+import configureStore from './components/configureStore';
 
 import ReactDOM from 'react-dom';
 
@@ -24,6 +26,7 @@ injectTapEventPlugin();
 class User extends Model{
     isGuest = true;
 }*/
+const store = configureStore()
 
 function needAuth(){
    /* User.on('logged', ()=>{
@@ -36,23 +39,23 @@ function needAuth(){
 }
 
 ReactDOM.render(
-<MuiThemeProvider>
-    
-<Router history={browserHistory}>
-    <Route path='/' component={Main} onEnter={needAuth}>
-      <IndexRoute component={Home} />
-      <Route path='/table' component={Table} />
-      <Route path='/swipe' component={Tabs} />
-    </Route>
+    <Provider store={store} >
+        <MuiThemeProvider>    
+        <Router history={browserHistory}>
+            <Route path='/' component={Main} onEnter={needAuth}>
+            <IndexRoute component={Home} />
+            <Route path='/table' component={Table} />
+            <Route path='/swipe' component={Tabs} />
+            </Route>
 
-    <Route path='/login' component={Login} />
-    <Route path='/sign' component={Sign} />
-       {/* для всех остальных роутов: показывай NotFound */}
-    <Route path='*' component={NotFound} />
-  </Router>
-
-
-</MuiThemeProvider>, 
+            <Route path='/login' component={Login} />
+            <Route path='/sign' component={Sign} />
+            {/* для всех остальных роутов: показывай NotFound */}
+            <Route path='*' component={NotFound} />
+        </Router>
+        </MuiThemeProvider>
+    </Provider>
+, 
 document.getElementById('root')
 );
 registerServiceWorker();

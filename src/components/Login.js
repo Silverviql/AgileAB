@@ -9,8 +9,13 @@ import Screen from '../utils/Screen';
 
 import { browserHistory } from 'react-router';
 
-import AgileSvg from '../agile.svg';
+import AgileSvg from '../image/agile.svg';
 
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+
+import * as UserActions from '../constants/UserActions'
 
 const Styles = {
   main: {
@@ -36,7 +41,7 @@ const Styles = {
   }
 };
 
-class Log_in extends Component {
+class LoginPage extends Component {
   constructor(...args){
     super(...args);
 
@@ -52,21 +57,39 @@ class Log_in extends Component {
   browserHistory.push('/sign');
   }
 
+
+   handleSubmit(e) {
+    e.preventDefault()
+    this.props.actions.login({name: e.target.elements[0].value})
+  }
+
+
     render(){
       return (
         <div style={Styles.main}>
           <img src={AgileSvg} style={Styles.logo}/>
-          <TextField hintText="Username"  style={Styles.input} />
+          <TextField hintText="Username"  style={Styles.input} onSubmit={this.handleSubmit} />
           {/*<TextField hintText="Username"  inputStyle={Styles.input} hintStyle={Styles.input} />*/}
           <TextField hintText="Password" style={Styles.input}/>
           <br />
-          <RaisedButton label="LOG IN" primary={true} style={Styles.button} onTouchTap={this.onAuth}/>
+          <RaisedButton label="LOG IN" primary={true} style={Styles.button} type='submit'/>
           
           <FlatButton label="Sign up" primary={true} style={Styles.button} onTouchTap={this.onSign} />
+          
         </div>
-      );
-      
+
+      )
+  }
+}
+  function mapStateToProps() {
+  return {}
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(UserActions, dispatch)
   }
 }
 
-export default Log_in;
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
