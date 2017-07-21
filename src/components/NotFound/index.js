@@ -1,25 +1,10 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router'
-import Screen from '../utils/Screen';
+import React, { Component } from 'react';
+import { Link } from 'react-router';
 import styles from '../css/style.css';
-import notFound from '../notFound.gif';
+import notFound from '../image/notFound.gif';
+import Screen from '../utils/Screen';
 
 const Styles = {
-  //   wrapper: {
-  //  backgroundImage: `url(${notFound})`,
-  //  backgroundRepeat: 'no-repeat',
-  //   backgroundSize: '100%',
-  //   backgroundPosition: '65% 50%',
-  //   height: Screen.height,
-  //   display: 'flex',
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  //   flexDirection: 'column'
-  // },
-  // img: {
-  //   marginLeft: '10%',
-  //   width: '60%'
-  // },
   main: {
     height: Screen.height,
     backgroundColor: 'rgba(255, 255, 255, 1)',

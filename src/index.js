@@ -2,16 +2,16 @@ import 'normalize.css';
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import Main from './containers/Main';
+import Main from './containers/App';
 import Home from './components/Home';
 import NotFound from './components/NotFound';
-import Login from './components/Login';
+import Login from './containers/Login';
 import Sign from './components/Sign';
 import Table from './components/Table';
 import Tabs from './components/Tabs';
 
 import { Provider } from 'react-redux'
-import configureStore from './components/configureStore';
+import configureStore from './store/configureStore';
 
 import ReactDOM from 'react-dom';
 
@@ -42,12 +42,11 @@ ReactDOM.render(
     <Provider store={store} >
         <MuiThemeProvider>    
         <Router history={browserHistory}>
-            <Route path='/' component={Main} onEnter={needAuth}>
-            <IndexRoute component={Home} />
+            <Route path='/' component={Login} onEnter={needAuth}>
+            <IndexRoute component={Home}/>
             <Route path='/table' component={Table} />
             <Route path='/swipe' component={Tabs} />
             </Route>
-
             <Route path='/login' component={Login} />
             <Route path='/sign' component={Sign} />
             {/* для всех остальных роутов: показывай NotFound */}

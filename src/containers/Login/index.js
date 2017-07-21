@@ -9,13 +9,13 @@ import Screen from '../utils/Screen';
 
 import { browserHistory } from 'react-router';
 
-import AgileSvg from '../image/agile.svg';
+import AgileSvg from './image/agile.svg';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 
-import * as UserActions from '../constants/UserActions'
+import * as UserActions from '../actions/UserActions'
 
 const Styles = {
   main: {

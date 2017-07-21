@@ -80,7 +80,7 @@ class Bar extends Component {
 
     this.state = {
       menuOpen: false,
-      logged: true,
+      logged: false,
     }
 
     this.menuToggle = this.menuToggle.bind(this);
@@ -105,13 +105,13 @@ menuTable(){
   render() {
     return (
      <div>
-        <Toggle
+        {/* <Toggle
           label="Logged"
           defaultToggled={true}
           onToggle={this.handleChange}
           labelPosition="right"
 
-        />
+        /> */}
         <AppBar
           title="Menu" style={styles.menu}
           onLeftIconButtonTouchTap={this.menuToggle}

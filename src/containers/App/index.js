@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import AppBar from '../components/AppBar'
+import AppBar from '.s/components/AppBar'
 import PropTypes from 'prop-types';
 
 export default class Main extends Component{
