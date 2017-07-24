@@ -3,7 +3,7 @@ import {
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT_SUCCESS
-} from '../constants/User'
+} from 'constants/User'
 
 export function login(payload) {
   // TODO

@@ -6,12 +6,12 @@ import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 
 import { browserHistory } from 'react-router'
-import Screen from '../utils/Screen';
+import Screen from 'utils/Screen';
 
-import Designer from '../image//designer.svg';
-import Programmer from '../image//programmer.svg';
-import QAengineer from '../image//QAengineer.svg';
-import Scram from '../image//scram.svg';
+import Designer from 'image//designer.svg';
+import Programmer from 'image//programmer.svg';
+import QAengineer from 'image//QAengineer.svg';
+import Scram from 'image//scram.svg';
 
 const Styles = {
   main: {
@@ -25,18 +25,18 @@ const Styles = {
     overflow: 'hidden'
   },
   desig: {
-    width: '20%',
+    width: '15%',
     marginLeft: '100px'
   },
   prog: {
-    width: '20%',
+    width: '15%',
     marginRight: '200px'
   },
   QAengin: {
-    width: '20%'
+    width: '15%'
   },
   scram: {
-    width: '20%'
+    width: '15%'
   },
   input:{
   //  textAlign: 'center',
@@ -63,14 +63,14 @@ class Sign_in extends Component {
       render(){
             return (
               <div style={Styles.main}>
-               {/*<h2>Sign up</h2>*/}
+                <h3>Sign up</h3>
                 <img src={Designer}  style={Styles.desig}/>
                 <img src={Programmer} style={Styles.prog}/>
                 <img src={QAengineer} style={Styles.QAengin}/>
-                <img src={Scram} style={Styles.scram}/>
-                {/*<img src={AgileSvg} style={Styles.logo}/>*/}
+                <img src={Scram} style={Styles.scram}/> 
+                {/*<img src={AgileSvg} style={Styles.logo}/>  */}
                 <TextField hintText="Username"  style={Styles.input} />
-                {/*<TextField hintText="Username"  inputStyle={Styles.input} hintStyle={Styles.input} />*/}
+                {/* <TextField hintText="Username"  inputStyle={Styles.input} hintStyle={Styles.input} /> */}
 
                 <TextField hintText="Email" style={Styles.input}  />
 

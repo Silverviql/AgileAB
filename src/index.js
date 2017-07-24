@@ -1,23 +1,25 @@
 import 'normalize.css';
+
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import Main from './containers/App';
-import Home from './components/Home';
-import NotFound from './components/NotFound';
-import Login from './containers/Login';
-import Sign from './components/Sign';
-import Table from './components/Table';
-import Tabs from './components/Tabs';
+
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 import { Provider } from 'react-redux'
 import configureStore from './store/configureStore';
 
-import ReactDOM from 'react-dom';
-
 import registerServiceWorker from './registerServiceWorker';
 
-import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import App from 'containers/App';
+import Home from 'compoments/Home';
+import NotFound from 'compoments/NotFound';
+import Login from 'containers/Login';
+import Sign from 'compoments/Sign';
+import Table from 'compoments/Table';
+import Tabs from 'compoments/Tabs';
 
 injectTapEventPlugin();
 
@@ -34,7 +36,7 @@ function needAuth(){
     })*/
     const isGuest = false;
     if(isGuest){
-        browserHistory.push('/auth')
+        browserHistory.push('/login')
     }
 }
 
@@ -42,7 +44,7 @@ ReactDOM.render(
     <Provider store={store} >
         <MuiThemeProvider>    
         <Router history={browserHistory}>
-            <Route path='/' component={Login} onEnter={needAuth}>
+            <Route path='/' component={App} onEnter={needAuth}>
             <IndexRoute component={Home}/>
             <Route path='/table' component={Table} />
             <Route path='/swipe' component={Tabs} />

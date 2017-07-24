@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import AppBar from '.s/components/AppBar'
 import PropTypes from 'prop-types';
+import AppBar from 'compoments/AppBar';
 
 export default class Main extends Component{
 
@@ -11,7 +11,7 @@ export default class Main extends Component{
    render() {
     return (
          <div>
-      <AppBar/>
+       <AppBar/> 
 
       {this.props.children}
        </div>

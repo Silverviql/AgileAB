@@ -5,17 +5,17 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 
-import Screen from '../utils/Screen';
+import Screen from 'utils/Screen';
 
 import { browserHistory } from 'react-router';
 
-import AgileSvg from './image/agile.svg';
+import AgileSvg from 'image/agile.svg';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 
-import * as UserActions from '../actions/UserActions'
+import * as UserActions from 'actions/UserActions'
 
 const Styles = {
   main: {
@@ -67,7 +67,7 @@ class LoginPage extends Component {
     render(){
       return (
         <div style={Styles.main}>
-          <img src={AgileSvg} style={Styles.logo}/>
+           <img src={AgileSvg} style={Styles.logo}/> 
           <TextField hintText="Username"  style={Styles.input} onSubmit={this.handleSubmit} />
           {/*<TextField hintText="Username"  inputStyle={Styles.input} hintStyle={Styles.input} />*/}
           <TextField hintText="Password" style={Styles.input}/>
@@ -87,7 +87,7 @@ class LoginPage extends Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(UserActions, dispatch)
+   actions: bindActionCreators(UserActions, dispatch)
   }
 }
 
