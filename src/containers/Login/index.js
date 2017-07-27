@@ -113,13 +113,18 @@ class LoginPage extends Component {
       <div style={Styles.main}>
         <img src={AgileSvg} style={Styles.logo} />
         <TextField
-          hintText="Username"
+          hintText="Заполните поле Username"
+          errorText="This field is required"
+          floatingLabelText="Username"
           style={Styles.input}
           value={this.state.authData.login} 
           onChange={this.onChange} />
 
         <TextField 
-          hintText="Password" 
+          hintText="Заполните поле Password" 
+          errorText="This field is required"
+          floatingLabelText="Password"
+          type="password"
           style={Styles.input}
         value={this.state.authPass.password} 
           onChange={this.onPass} 

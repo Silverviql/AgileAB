@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
@@ -15,28 +15,28 @@ import { browserHistory } from 'react-router'
 
 class Login extends Component {
   static muiName = 'FlatButton';
-  
-   constructor(...args){
+
+  constructor(...args) {
     super(...args);
 
     this.inLogin = this.inLogin.bind(this);
     this.settingOut = this.settingOut.bind(this);
   }
- 
-  inLogin(){
+
+  inLogin() {
     browserHistory.push('/login');
   }
 
-  settingOut(){
+  settingOut() {
     browserHistory.push('/login');
   }
 
- 
+
 
   render() {
     return (
-     <div>
-      <FlatButton label="Login" onTouchTap={this.settingOut} {...this.props}/>
+      <div>
+        <FlatButton label="Login" onTouchTap={this.settingOut} {...this.props} />
       </div>
     );
   }
@@ -49,10 +49,10 @@ const Logged = (props) => (
     iconButtonElement={
       <IconButton><MoreVertIcon /></IconButton>
     }
-    targetOrigin={{horizontal: 'right', vertical: 'top'}}
-    anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+    targetOrigin={{ horizontal: 'right', vertical: 'top' }}
+    anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
   >
-    <MenuItem primaryText="Refresh"/>
+    <MenuItem primaryText="Refresh" />
     <MenuItem primaryText="Help" />
     {/*<MenuItem primaryText="Sign out" onTouchTap={this.inLogin} {...this.props}/>*/}
     <MenuItem onTouchTap={this.settingOut} >Sign out</MenuItem>
@@ -64,7 +64,7 @@ Logged.muiName = 'IconMenu';
 
 const styles = {
   menu: {
-  boxShadow: 'rgba(0, 0, 0, 0)',
+    boxShadow: 'rgba(0, 0, 0, 0)',
   },
 };
 
@@ -75,7 +75,7 @@ const styles = {
 class Bar extends Component {
 
 
-    constructor(...args){
+  constructor(...args) {
     super(...args);
 
     this.state = {
@@ -85,26 +85,31 @@ class Bar extends Component {
 
     this.menuToggle = this.menuToggle.bind(this);
     this.menuTable = this.menuTable.bind(this);
+    this.menuGrid = this.menuGrid.bind(this);
   }
 
 
-  menuToggle(){
+  menuToggle() {
     this.setState({
       menuOpen: !this.state.menuOpen
     })
   }
 
-menuTable(){
-  browserHistory.push('/table');
+  menuTable() {
+    browserHistory.push('/swipe');
+  }
+
+   menuGrid() {
+    browserHistory.push('/grid');
   }
 
   handleChange = (event, logged) => {
-    this.setState({logged: logged});
+    this.setState({ logged: logged });
   };
 
   render() {
     return (
-     <div>
+      <div>
         {/* <Toggle
           label="Logged"
           defaultToggled={true}
@@ -117,9 +122,9 @@ menuTable(){
           onLeftIconButtonTouchTap={this.menuToggle}
           iconElementRight={this.state.logged ? <Logged /> : <Login />}
         />
-         <Drawer open={this.state.menuOpen} docked={false} onRequestChange={(open, reason) => this.setState({menuOpen:open})}>
+        <Drawer open={this.state.menuOpen} docked={false} onRequestChange={(open, reason) => this.setState({ menuOpen: open })}>
           <MenuItem onTouchTap={this.menuTable} >Table</MenuItem>
-          <MenuItem>Menu Item 2</MenuItem>
+          <MenuItem onTouchTap={this.menuGrid} >Grid</MenuItem>
         </Drawer>
         {/* добавили вывод потомков */}
         {this.props.children}

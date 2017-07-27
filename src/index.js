@@ -13,13 +13,13 @@ import configureStore from './store/configureStore';
 
 import registerServiceWorker from './registerServiceWorker';
 
-import App from 'containers/App';
-import Home from 'compoments/Home';
-import NotFound from 'compoments/NotFound';
+import Main from 'containers/Main';
+import Home from 'components/Home';
+import NotFound from 'components/NotFound';
 import Login from 'containers/Login';
-import Sign from 'compoments/Sign';
-import Table from 'compoments/Table';
-import Tabs from 'compoments/Tabs';
+import Sign from 'components/Sign';
+import Tabs from 'components/Tabs';
+import GridList from 'components/GridList';
 
 injectTapEventPlugin();
 
@@ -44,10 +44,10 @@ ReactDOM.render(
     <Provider store={store} >
         <MuiThemeProvider>    
         <Router history={browserHistory}>
-            <Route path='/' component={App} onEnter={needAuth}>
+            <Route path='/' component={Main} onEnter={needAuth}>
             <IndexRoute component={Home}/>
-            <Route path='/table' component={Table} />
             <Route path='/swipe' component={Tabs} />
+            <Route path='/grid' component={GridList} />
             </Route>
             <Route path='/login' component={Login} />
             <Route path='/sign' component={Sign} />
