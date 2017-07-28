@@ -1,20 +1,20 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AppBar from 'components/AppBar';
 
-export default class Main extends Component{
+export default class Main extends Component {
 
-    static propTypes = {
-        children: PropTypes.object,
-         }
+  static propTypes = {
+    children: PropTypes.object,
+  }
 
-   render() {
+  render() {
     return (
-         <div>
-       <AppBar/> 
+      <div>
+        <AppBar />
 
-      {this.props.children}
-       </div>
+        {this.props.children}
+      </div>
     );
   }
 }

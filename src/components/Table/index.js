@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Table,
   TableBody,
@@ -57,9 +57,9 @@ const tableData = [
  * A more complex example, allowing the table height to be set, and key boolean properties to be toggled.
  */
 export default class TableExampleComplex extends Component {
-  
+
   state = {
-  
+
   };
 
   handleToggle = (event, toggled) => {
@@ -69,7 +69,7 @@ export default class TableExampleComplex extends Component {
   };
 
   handleChange = (event) => {
-    this.setState({height: event.target.value});
+    this.setState({ height: event.target.value });
   };
 
   render() {
@@ -88,7 +88,7 @@ export default class TableExampleComplex extends Component {
             enableSelectAll={this.state.enableSelectAll}
           >
             <TableRow>
-              <TableHeaderColumn colSpan="3" tooltip="Super Header" style={{textAlign: 'center'}}>
+              <TableHeaderColumn colSpan="3" tooltip="Super Header" style={{ textAlign: 'center' }}>
                 Super Header
               </TableHeaderColumn>
             </TableRow>
@@ -104,13 +104,13 @@ export default class TableExampleComplex extends Component {
             showRowHover={this.state.showRowHover}
             stripedRows={this.state.stripedRows}
           >
-            {tableData.map( (row, index) => (
+            {tableData.map((row, index) => (
               <TableRow key={index}>
                 <TableRowColumn>{index}</TableRowColumn>
                 <TableRowColumn>{row.name}</TableRowColumn>
                 <TableRowColumn>{row.status}</TableRowColumn>
               </TableRow>
-              ))}
+            ))}
           </TableBody>
           <TableFooter
             adjustForCheckbox={this.state.showCheckboxes}
@@ -121,14 +121,14 @@ export default class TableExampleComplex extends Component {
               <TableRowColumn>Status</TableRowColumn>
             </TableRow>
             <TableRow>
-              <TableRowColumn colSpan="3" style={{textAlign: 'center'}}>
+              <TableRowColumn colSpan="3" style={{ textAlign: 'center' }}>
                 Super Footer
               </TableRowColumn>
             </TableRow>
           </TableFooter>
         </Table>
 
-       
+
       </div>
     );
   }

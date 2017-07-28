@@ -20,7 +20,6 @@ import * as UserActions from 'actions/UserActions'
 const Styles = {
   main: {
     height: Screen.height,
-    //backgroundColor: 'rgba(61, 80, 105, 0.9)',
     backgroundColor: 'rgba(255, 255, 255, 1)',
     display: 'flex',
     justifyContent: 'center',
@@ -45,11 +44,13 @@ class LoginPage extends Component {
 
   state = {
     authData: {
-      login: ''
+      login: '',
     },
+
     authPass: {
-      password: ''
+      password: '',
     },
+
     testDate: {
       login: "user",
       password: "user"
@@ -58,25 +59,24 @@ class LoginPage extends Component {
 
   constructor(...args) {
     super(...args);
-
+    this.onPass = this.onPass.bind(this);
     this.onSign = this.onSign.bind(this);
     this.onAuth = this.onAuth.bind(this);
     this.onChange = this.onChange.bind(this);
-    this.onPass = this.onPass.bind(this);
   }
 
- onAuth() {
-  // console.log(this.state.authData.login );
-  // console.log(this.state.authData.password );
-    if(this.state.authData.login == this.state.testDate.login){
-        browserHistory.push('/');
+  onAuth() {
+    // console.log(this.state.authData.login );
+    // console.log(this.state.authData.password );
+    if (this.state.authData.login == this.state.testDate.login) {
+      browserHistory.push('/');
     }
-    if(this.state.authPass.password == this.state.testDate.password){
-        browserHistory.push('/');
+    if (this.state.authPass.password == this.state.testDate.password) {
+      browserHistory.push('/');
     }
-      else {
-        console.log("Неверный логин или пароль")
-      }
+    else {
+      console.log("Неверный логин или пароль")
+    }
   }
 
   onSign() {
@@ -84,24 +84,30 @@ class LoginPage extends Component {
   }
 
   onChange(e) {
-    if(!e.target.value){
-      console.error("no login")
+
+    if (!e.target.value) {
+      this.setState({ errorTextLogin: 'Введите Логин' })
     }
-    // else { 
-    //   console.log("Authenticated successfully")
-    // }
+    else {
+      this.setState({ errorTextLogin: '' })
+    }
+
     this.setState({
       authData: {
-        login: e.target.value
+        login: e.target.value,
       }
     })
   }
 
   onPass(e) {
-      if(!e.target.value){
-      console.error("no pass")
+    if (!e.target.value) {
+      this.setState({ errorTextPass: 'Введите Пароль' })
     }
-      this.setState({
+    else {
+      this.setState({ errorTextPass: '' })
+    }
+
+    this.setState({
       authPass: {
         password: e.target.value
       }
@@ -113,22 +119,26 @@ class LoginPage extends Component {
       <div style={Styles.main}>
         <img src={AgileSvg} style={Styles.logo} />
         <TextField
+          name="a"
           hintText="Заполните поле Username"
-          errorText="This field is required"
+          errorText={this.state.errorTextLogin}
           floatingLabelText="Username"
           style={Styles.input}
-          value={this.state.authData.login} 
-          onChange={this.onChange} />
+          value={this.state.authData.login}
+          onChange={this.onChange}
+        />
 
-        <TextField 
-          hintText="Заполните поле Password" 
-          errorText="This field is required"
+        <TextField
+          name="b"
+          hintText="Заполните поле Password"
+          errorText={this.state.errorTextPass}
           floatingLabelText="Password"
           type="password"
           style={Styles.input}
-        value={this.state.authPass.password} 
-          onChange={this.onPass} 
-          /> 
+          value={this.state.authPass.password}
+          onChange={this.onPass}
+        />
+
 
         <br />
         <RaisedButton label="LOG IN" primary={true} style={Styles.button} type='submit' onTouchTap={this.onAuth} />

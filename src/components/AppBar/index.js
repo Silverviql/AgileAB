@@ -19,13 +19,9 @@ class Login extends Component {
   constructor(...args) {
     super(...args);
 
-    this.inLogin = this.inLogin.bind(this);
     this.settingOut = this.settingOut.bind(this);
   }
 
-  inLogin() {
-    browserHistory.push('/login');
-  }
 
   settingOut() {
     browserHistory.push('/login');
@@ -54,7 +50,6 @@ const Logged = (props) => (
   >
     <MenuItem primaryText="Refresh" />
     <MenuItem primaryText="Help" />
-    {/*<MenuItem primaryText="Sign out" onTouchTap={this.inLogin} {...this.props}/>*/}
     <MenuItem onTouchTap={this.settingOut} >Sign out</MenuItem>
   </IconMenu>
 );
@@ -82,7 +77,7 @@ class Bar extends Component {
       menuOpen: false,
       logged: false,
     }
-
+    this.menuHome = this.menuHome.bind(this);
     this.menuToggle = this.menuToggle.bind(this);
     this.menuTable = this.menuTable.bind(this);
     this.menuGrid = this.menuGrid.bind(this);
@@ -93,6 +88,9 @@ class Bar extends Component {
     this.setState({
       menuOpen: !this.state.menuOpen
     })
+  }
+  menuHome() {
+    browserHistory.push('/');
   }
 
   menuTable() {
@@ -123,6 +121,8 @@ class Bar extends Component {
           iconElementRight={this.state.logged ? <Logged /> : <Login />}
         />
         <Drawer open={this.state.menuOpen} docked={false} onRequestChange={(open, reason) => this.setState({ menuOpen: open })}>
+          <br/>
+          <MenuItem onTouchTap={this.menuHome} >Main</MenuItem>
           <MenuItem onTouchTap={this.menuTable} >Table</MenuItem>
           <MenuItem onTouchTap={this.menuGrid} >Grid</MenuItem>
         </Drawer>
